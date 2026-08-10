@@ -1003,6 +1003,34 @@
         </div>
       </section>
     </section>
+
+    <section class="page" id="page-payment-success">
+      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › <b>Payment Success</b></div></div>
+      <section class="page-hero">
+        <div class="container">
+          <h1 style="color: var(--green-700);">Payment Successful</h1>
+          <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+          <p>Your session ID is: <b id="success-session-id"></b></p>
+          <div class="button-row">
+            <button class="primary-btn" data-route="home" type="button">Return to Home</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="page-payment-cancel">
+      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › <b>Payment Cancelled</b></div></div>
+      <section class="page-hero">
+        <div class="container">
+          <h1 style="color: var(--red-700);">Payment Cancelled</h1>
+          <p>Your payment has been cancelled. You have not been charged.</p>
+          <p>Your session ID was: <b id="cancel-session-id"></b></p>
+          <div class="button-row">
+            <button class="primary-btn" data-route="rol" type="button">Return to Registration</button>
+          </div>
+        </div>
+      </section>
+    </section>
   </main>
 
   <footer>
@@ -1034,7 +1062,9 @@
       const pages = {
         home: document.getElementById('page-home'),
         business: document.getElementById('page-business'),
-        rol: document.getElementById('page-rol')
+        rol: document.getElementById('page-rol'),
+        'payment-success': document.getElementById('page-payment-success'),
+        'payment-cancel': document.getElementById('page-payment-cancel')
       };
 
       const megaMenu = document.getElementById('megaMenu');
@@ -1152,8 +1182,24 @@
 
       function handleRouteChange() {
         // Get the route from the hash (e.g., #rol -> "rol")
-        const route = window.location.hash.substring(1);
-        showPage(route || 'home');
+        const route = window.location.hash.substring(1) || 'home';
+        showPage(route);
+
+        // Handle Stripe Checkout redirects which add a session_id query parameter
+        if (route === 'payment-success' || route === 'payment-cancel') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const sessionId = urlParams.get('session_id');
+
+          if (sessionId) {
+            const sessionIdElementId = route === 'payment-success' ? 'success-session-id' : 'cancel-session-id';
+            const sessionIdElement = document.getElementById(sessionIdElementId);
+            if (sessionIdElement) {
+              sessionIdElement.textContent = sessionId;
+            }
+            // Clean up the URL to remove the query string after processing
+            window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+          }
+        }
       }
 
       // Listen for hash changes to handle back/forward buttons and direct link clicks
