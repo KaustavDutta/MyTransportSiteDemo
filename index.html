@@ -1011,11 +1011,8 @@
           <div class="preview-card" style="max-width: 620px; margin-inline: auto; text-align: center; padding: 32px 24px;">
             <div style="font-size: 48px; color: var(--green-700);">✓</div>
             <h1 style="color: var(--green-700);">Payment Successful</h1>
-            <p>Thank you for your payment. Your transaction has been completed successfully. Please return to the ROL application and click 'Next' to continue your application.</p>
+            <p>Thank you for your payment. Your transaction has been completed successfully. You may now close this window and return to the ROL application to continue.</p>
             <p>Your session ID is: <b id="success-session-id"></b></p>
-            <div class="button-row" style="justify-content: center;">
-              <button class="primary-btn" id="close-window-success-btn" type="button">Return to ROL application</button>
-            </div>
           </div>
         </div>
       </section>
@@ -1028,11 +1025,8 @@
           <div class="preview-card" style="max-width: 620px; margin-inline: auto; text-align: center; padding: 32px 24px;">
             <div style="font-size: 48px; color: var(--red-700);">✕</div>
             <h1 style="color: var(--red-700);">Payment Cancelled</h1>
-            <p>Your payment has been cancelled. You have not been charged.</p>
+            <p>Your payment has been cancelled. You have not been charged. You may now close this window and return to the ROL application.</p>
             <p>Your session ID was: <b id="cancel-session-id"></b></p>
-            <div class="button-row" style="justify-content: center;">
-              <button class="primary-btn" id="close-window-cancel-btn" type="button">Return to ROL application</button>
-            </div>
           </div>
         </div>
       </section>
@@ -1185,10 +1179,6 @@
           }
         });
       }
-
-      // Add listeners to the payment status page buttons to close the window.
-      document.getElementById('close-window-success-btn')?.addEventListener('click', () => window.close());
-      document.getElementById('close-window-cancel-btn')?.addEventListener('click', () => window.close());
 
       function handleRouteChange() {
         // Get the route from the hash (e.g., #rol -> "rol")
