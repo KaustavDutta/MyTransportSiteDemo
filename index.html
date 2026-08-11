@@ -1012,7 +1012,7 @@
             <div style="font-size: 48px; color: var(--green-700);">✓</div>
             <h1 style="color: var(--green-700);">Payment Successful</h1>
             <p>Thank you for your payment. Your transaction has been completed successfully. You may now close this window and return to the ROL application to continue.</p>
-            <p>Your session ID is: <b id="success-session-id"></b></p>
+            <p id="success-session-details" style="display: none;">Your session ID is: <b id="success-session-id"></b></p>
           </div>
         </div>
       </section>
@@ -1026,7 +1026,7 @@
             <div style="font-size: 48px; color: var(--red-700);">✕</div>
             <h1 style="color: var(--red-700);">Payment Cancelled</h1>
             <p>Your payment has been cancelled. You have not been charged. You may now close this window and return to the ROL application.</p>
-            <p>Your session ID was: <b id="cancel-session-id"></b></p>
+            <p id="cancel-session-details" style="display: none;">Your session ID was: <b id="cancel-session-id"></b></p>
           </div>
         </div>
       </section>
@@ -1181,23 +1181,32 @@
       }
 
       function handleRouteChange() {
-        // Get the route from the hash (e.g., #rol -> "rol")
-        const route = window.location.hash.substring(1) || 'home';
+        // Get the full hash string, without the leading '#'
+        const fullHash = window.location.hash.substring(1);
+
+        // Separate the route from any query parameters that might be in the hash
+        const [routePart, hashQueryString] = fullHash.split('?');
+        const route = routePart || 'home';
+
         showPage(route);
 
         // Handle Stripe Checkout redirects which add a session_id query parameter
         if (route === 'payment-success' || route === 'payment-cancel') {
-          const urlParams = new URLSearchParams(window.location.search);
-          const sessionId = urlParams.get('session_id');
+          // Check both the main URL's search params AND the hash's query params
+          const mainUrlParams = new URLSearchParams(window.location.search);
+          const hashUrlParams = new URLSearchParams(hashQueryString);
+          const sessionId = mainUrlParams.get('session_id') || hashUrlParams.get('session_id');
 
           if (sessionId) {
-            const sessionIdElementId = route === 'payment-success' ? 'success-session-id' : 'cancel-session-id';
-            const sessionIdElement = document.getElementById(sessionIdElementId);
-            if (sessionIdElement) {
+            const isSuccess = route === 'payment-success';
+            const detailsElement = document.getElementById(isSuccess ? 'success-session-details' : 'cancel-session-details');
+            const sessionIdElement = document.getElementById(isSuccess ? 'success-session-id' : 'cancel-session-id');
+            if (detailsElement && sessionIdElement) {
               sessionIdElement.textContent = sessionId;
+              detailsElement.style.display = 'block';
             }
             // Clean up the URL to remove the query string after processing
-            window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+            window.history.replaceState({}, document.title, window.location.pathname + '#' + route);
           }
         }
       }
