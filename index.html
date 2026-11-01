@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Transport for NSW | Road Occupancy Licences</title>
-  <meta name="description" content="Static TfNSW-style Road Occupancy Licence demo with Pega Web Embed for Register a Proponent." />
+  <title>Service Portal Demo | Road Occupancy Licences</title>
+  <meta name="description" content="Static white-label style Road Occupancy Licence demo with Pega Web Embed for Register a Proponent." />
 
   <!-- Pega Web Embed script -->
   <script src="https://accenture78.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
 
   <style>
     :root {
-      --tfnsw-blue: #002664;
-      --tfnsw-accent: #00a3e0;
-      --nsw-yellow: #fdbb30;
+      --brand-primary: #004874;
+      --brand-accent: #0096D7;
+      --brand-highlight: #fdb515;
       --slate-50: #f8fafc;
       --slate-100: #f1f5f9;
       --slate-200: #e2e8f0;
@@ -54,7 +54,7 @@
     }
 
     .topbar {
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       color: white;
       font-size: 12px;
     }
@@ -84,7 +84,7 @@
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: var(--nsw-yellow);
+      background: var(--brand-highlight);
     }
 
     .topbar-links {
@@ -140,14 +140,14 @@
       place-items: center;
       border-radius: 18px;
       color: #fff;
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       box-shadow: var(--shadow-sm);
       font-weight: 900;
     }
 
     .brand-title {
       font-weight: 900;
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       font-size: 18px;
       line-height: 1.05;
     }
@@ -163,7 +163,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       color: white;
       border-radius: 999px;
       padding: 5px 8px;
@@ -219,7 +219,7 @@
     .mega-menu.open { display: grid; grid-template-columns: 260px 1fr; }
 
     .mega-copy {
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       color: white;
       padding: 24px;
     }
@@ -266,7 +266,7 @@
     }
 
     .mega-item:hover, .mega-item.highlight { background: #eff6ff; }
-    .mega-title { color: var(--tfnsw-blue); font-weight: 900; display: block; }
+    .mega-title { color: var(--brand-primary); font-weight: 900; display: block; }
     .mega-text { color: var(--slate-600); font-size: 14px; margin-top: 5px; display: block; line-height: 1.45; }
 
     .mobile-panel {
@@ -287,7 +287,7 @@
       color: var(--slate-700);
     }
     .mobile-panel .child { margin-left: 16px; background: var(--slate-50); }
-    .mobile-panel .child-accent { margin-left: 32px; background: #eff6ff; color: var(--tfnsw-blue); }
+    .mobile-panel .child-accent { margin-left: 32px; background: #eff6ff; color: var(--brand-primary); }
 
     .page { display: none; }
     .page.active { display: block; animation: fadeIn 0.22s ease both; }
@@ -301,17 +301,17 @@
       position: relative;
       overflow: hidden;
       color: white;
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
     }
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.22;
+      opacity: 0.18;
       background:
-        radial-gradient(circle at 15% 15%, var(--tfnsw-accent), transparent 34%),
-        radial-gradient(circle at 85% 10%, var(--nsw-yellow), transparent 26%);
+        radial-gradient(circle at 15% 15%, var(--brand-accent), transparent 34%),
+        radial-gradient(circle at 85% 10%, var(--brand-highlight), transparent 26%);
     }
 
     .hero-inner {
@@ -346,7 +346,7 @@
       margin-top: 32px;
       border-radius: 999px;
       background: white;
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       padding: 13px 24px;
       font-weight: 900;
       box-shadow: var(--shadow-lg);
@@ -426,7 +426,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .card h3, .card h2 { color: var(--tfnsw-blue); margin: 0; }
+    .card h3, .card h2 { color: var(--brand-primary); margin: 0; }
     .card p { color: var(--slate-600); line-height: 1.65; }
 
     .breadcrumb {
@@ -453,7 +453,7 @@
     }
 
     .page-hero h1 {
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       font-size: clamp(38px, 5vw, 56px);
       line-height: 1;
       margin: 12px 0 0;
@@ -495,7 +495,7 @@
 
     button.service-tile {
       width: 100%;
-      border: 2px solid var(--tfnsw-blue);
+      border: 2px solid var(--brand-primary);
     }
 
     button.service-tile:hover {
@@ -509,14 +509,14 @@
       display: grid;
       place-items: center;
       border-radius: 16px;
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       background: #eff6ff;
       font-size: 22px;
       font-weight: 900;
     }
 
     .service-tile h3 {
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       margin: 18px 0 0;
       font-size: 20px;
     }
@@ -531,7 +531,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       font-weight: 900;
       font-size: 14px;
       margin-top: 8px;
@@ -549,11 +549,11 @@
       font-weight: 900;
     }
 
-    .pill-btn.active { background: var(--tfnsw-blue); color: white; }
+    .pill-btn.active { background: var(--brand-primary); color: white; }
 
     .help-card {
       color: white;
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       border-radius: var(--radius-3xl);
       padding: 24px;
       box-shadow: var(--shadow-lg);
@@ -594,7 +594,7 @@
 
     .side-nav a.active {
       background: #eff6ff;
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
     }
 
     .embed-section {
@@ -615,7 +615,7 @@
     }
 
     .embed-header h2 {
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       margin: 0;
       font-size: 26px;
     }
@@ -690,7 +690,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .guidance-card h2 { color: var(--tfnsw-blue); margin: 0; }
+    .guidance-card h2 { color: var(--brand-primary); margin: 0; }
 
     .guidance-grid {
       display: grid;
@@ -711,13 +711,13 @@
       display: grid;
       place-items: center;
       border-radius: 999px;
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       color: white;
       font-weight: 900;
     }
 
     .guidance-step h3 {
-      color: var(--tfnsw-blue);
+      color: var(--brand-primary);
       margin: 16px 0 0;
     }
 
@@ -728,7 +728,7 @@
     }
 
     footer {
-      background: var(--tfnsw-blue);
+      background: var(--brand-primary);
       color: white;
       padding: 48px 0;
     }
@@ -774,13 +774,8 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="nsw-lockup">
-        <img
-          src="https://visitwagga.com/__data/assets/image/0008/178730/NSWGov_Waratah_Primary_WHITE_web.png"
-          alt="NSW Government"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"
-        />
-        <span class="fallback-dot" style="display:none"></span>
-        <span>NSW Government</span>
+        <span class="fallback-dot"></span>
+        <span>Service Portal</span>
       </div>
       <div class="topbar-links">
         <span>Contact</span>
@@ -792,18 +787,13 @@
 
   <header class="site-header">
     <div class="container site-header-inner">
-      <button class="brand-button" type="button" data-route="home" aria-label="Transport for NSW home">
-        <img
-          class="brand-logo-img"
-          src="https://www.transport.nsw.gov.au/themes/tfnsw_corp_theme/source/tfnsw/components/header/images/logo-TfNSW.png"
-          alt="Transport for NSW"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        />
-        <span class="brand-fallback">
-          <span class="brand-icon">T</span>
+      <button class="brand-button" type="button" data-route="home" aria-label="Service Portal home">
+        <!-- Original image removed for white-labelling -->
+        <span class="brand-fallback" style="display: flex;">
+          <span class="brand-icon">S</span>
           <span>
-            <span class="brand-title">Transport</span><br />
-            <span class="brand-subtitle">for NSW</span>
+            <span class="brand-title">Service</span><br />
+            <span class="brand-subtitle">Portal</span>
           </span>
         </span>
       </button>
@@ -823,8 +813,8 @@
       <div class="mega-menu" id="megaMenu" aria-label="Operations menu">
         <div class="mega-copy">
           <p class="eyebrow">Operations</p>
-          <h3>Move people and goods safely across NSW</h3>
-          <p>Access roads, waterways and network services for business, industry and the community.</p>
+          <h3>Access services and resources for your business</h3>
+          <p>Find information, apply for licences, and manage your interactions with us.</p>
         </div>
         <div class="mega-list">
           <button type="button" class="mega-item" data-route="business">
@@ -860,21 +850,14 @@
       <article class="hero">
         <div class="container hero-inner">
           <div>
-            <p class="eyebrow">Transport for NSW</p>
-            <h1>Connecting people, goods and places across NSW</h1>
-            <p>A static web prototype mirroring the Transport for NSW journey from Operations to Business and Industry, then into Road Occupancy Licences and proponent registration.</p>
+            <p class="eyebrow">Welcome</p>
+            <h1>A modern, streamlined service experience</h1>
+            <p>A static web prototype demonstrating a journey from a main portal into an embedded service for registration.</p>
             <button class="primary-btn" data-route="business" type="button">Explore Operations</button>
           </div>
 
           <div class="preview-shell">
             <div class="preview-card">
-              <div class="preview-logo">
-                <img
-                  class="brand-logo-img"
-                  src="https://www.transport.nsw.gov.au/themes/tfnsw_corp_theme/source/tfnsw/components/header/images/logo-TfNSW.png"
-                  alt="Transport for NSW"
-                />
-              </div>
               <div class="journey">
                 <p class="journey-title">Journey preview</p>
                 <div class="journey-step"><span class="status-dot done"></span>Operations</div>
@@ -898,21 +881,17 @@
     </section>
 
     <section class="page" id="page-business">
-      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › Operations › Roads and waterways › <b>Business and Industry</b></div></div>
+      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › Services › <b>Business and Industry</b></div></div>
 
       <section class="page-hero">
         <div class="container grid-2-1">
           <div>
-            <p class="eyebrow" style="color:var(--tfnsw-accent)">Operations / Roads and waterways</p>
+            <p class="eyebrow" style="color:var(--brand-accent)">Services</p>
             <h1>Business and Industry</h1>
-            <p>Information and resources for people and organisations who do business with Transport for NSW, including industry partners, accredited service providers and suppliers.</p>
+            <p>Information and resources for people and organisations who do business with us, including industry partners, accredited service providers and suppliers.</p>
           </div>
           <div class="business-logo-card">
-            <img
-              class="brand-logo-img"
-              src="https://www.transport.nsw.gov.au/themes/tfnsw_corp_theme/source/tfnsw/components/header/images/logo-TfNSW.png"
-              alt="Transport for NSW"
-            />
+            <p style="color: var(--slate-400); font-weight: 700;">Your Logo Here</p>
           </div>
         </div>
       </section>
@@ -935,19 +914,19 @@
     </section>
 
     <section class="page" id="page-rol">
-      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › Operations › Roads and waterways › Business and Industry › <b>Road occupancy licences</b></div></div>
+      <div class="breadcrumb"><div class="container breadcrumb-inner">Home › Services › Business and Industry › <b>Road occupancy licences</b></div></div>
 
       <section class="page-hero rol-hero">
         <div class="container grid-2-1">
           <div>
             <p class="eyebrow" style="color:var(--tfnsw-accent)">Business and Industry</p>
             <h1>Road occupancy licences</h1>
-            <p>A Road Occupancy Licence is required for any activity likely to impact traffic flow, including activities that take place off-road.</p>
+            <p>A Road Occupancy Licence is required for any activity that is likely to impact traffic flow, including activities that take place off-road.</p>
           </div>
           <aside class="help-card">
             <h2>Need help?</h2>
-            <p>☎ Network Access Coordination Unit: 02 8396 1513</p>
-            <p>✉ tmc_piu@transport.nsw.gov.au</p>
+            <p>☎ Support Line: 1300 123 456</p>
+            <p>✉ support@example.com</p>
             <p>✓ Use your organisation details to start registration.</p>
           </aside>
         </div>
@@ -1036,13 +1015,9 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-logo">
-        <img
-          src="https://transportnsw.smartygrants.com.au/s/site/transportnsw/logo-white.png"
-          alt="Transport for NSW"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-        />
-        <div style="display:none;font-weight:900;font-size:24px;">Transport for NSW</div>
-        <p class="footer-copy">Static web page for Operations, Business and Industry, Road Occupancy Licences and Pega-based proponent registration.</p>
+        <!-- Original image removed for white-labelling -->
+        <div style="font-weight:900;font-size:24px;">Service Portal</div>
+        <p class="footer-copy">Static web page demo for a service portal with Pega-based proponent registration.</p>
       </div>
       <div>
         <h3>Quick links</h3>
