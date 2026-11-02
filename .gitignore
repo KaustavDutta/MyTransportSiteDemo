@@ -4,4 +4,5 @@
 # But re-include the specific files we want to track
 !index.html
 !images/
+!images/**
 !.gitignore
