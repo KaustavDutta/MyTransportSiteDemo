@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Service Portal Demo | Road Occupancy Licences</title>
-  <meta name="description" content="Static white-label style Road Occupancy Licence demo with Pega Web Embed for Register a Proponent." />
+  <title>AAccent | Road Occupancy Licences</title>
+  <link rel="icon" type="image/png" href="images/AppIconLarge.png" />
+  <meta name="description" content="AAccent: A modern, streamlined service experience for Road Occupancy Licences." />
 
   <!-- Pega Web Embed script -->
   <script src="https://accenture78.pegalabs.io/prweb/PRRestService/c11nsvc/v1/pega-embed.js"></script>
 
   <style>
     :root {
-      --brand-primary: #004874;
-      --brand-accent: #0096D7;
+      --brand-primary: #003A70;
+      --brand-accent: #005EB8;
+      --brand-light: #4A90D9;
       --brand-highlight: #fdb515;
       --slate-50: #f8fafc;
       --slate-100: #f1f5f9;
@@ -79,14 +81,6 @@
       width: auto;
     }
 
-    .fallback-dot {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--brand-highlight);
-    }
-
     .topbar-links {
       display: flex;
       align-items: center;
@@ -126,6 +120,12 @@
       height: 52px;
       width: auto;
     }
+
+    .brand-lockup { display: flex; align-items: center; gap: 12px; }
+    .brand-lockup img { height: 48px; width: 48px; }
+    .brand-wordmark { font-weight: 900; font-size: 26px; letter-spacing: -0.02em; color: var(--brand-primary); line-height: 1; display: block; }
+    .brand-wordmark span { color: var(--brand-light); }
+    .brand-tagline { display: block; margin-top: 5px; font-size: 11px; font-weight: 900; letter-spacing: 0.14em; color: var(--brand-accent); }
 
     .brand-fallback {
       display: none;
@@ -225,7 +225,7 @@
     }
 
     .eyebrow {
-      color: #bae6fd;
+      color: var(--brand-light);
       font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -300,18 +300,17 @@
     .hero {
       position: relative;
       overflow: hidden;
-      color: white;
-      background: var(--brand-primary);
+      color: var(--brand-primary);
+      background: #f4f8fd url('images/Section Background.png') no-repeat center center;
+      background-size: cover;
+      border-bottom: 1px solid var(--slate-200);
     }
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.18;
-      background:
-        radial-gradient(circle at 15% 15%, var(--brand-accent), transparent 34%),
-        radial-gradient(circle at 85% 10%, var(--brand-highlight), transparent 26%);
+      background: linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.86) 55%, rgba(244,248,253,0.7) 100%);
     }
 
     .hero-inner {
@@ -334,10 +333,14 @@
     .hero p {
       margin: 24px 0 0;
       max-width: 620px;
-      color: #e0f2fe;
+      color: var(--slate-700);
       font-size: 18px;
       line-height: 1.75;
     }
+
+    .hero .eyebrow { color: var(--brand-accent); }
+
+    .hero-art { width: 100%; height: auto; }
 
     .primary-btn {
       display: inline-flex;
@@ -345,18 +348,23 @@
       border: 0;
       margin-top: 32px;
       border-radius: 999px;
-      background: white;
-      color: var(--brand-primary);
+      background: var(--brand-accent);
+      color: white;
       padding: 13px 24px;
       font-weight: 900;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 10px 24px rgba(0, 94, 184, 0.3);
       text-decoration: none;
+      transition: background 0.16s ease, transform 0.16s ease;
     }
+
+    .primary-btn:hover { background: var(--brand-primary); transform: translateY(-1px); }
 
     .preview-shell {
       border-radius: 32px;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--slate-200);
       padding: 16px;
+      box-shadow: var(--shadow-lg);
       backdrop-filter: blur(6px);
     }
 
@@ -469,6 +477,22 @@
       color: var(--slate-700);
     }
 
+    .page-hero.business-hero {
+      background: #f4f8fd url('images/Section Background.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+    .page-hero.business-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+    }
+    .page-hero.business-hero > .container {
+      position: relative; /* Ensure content is above overlay */
+    }
+    .page-hero.business-hero .eyebrow { color: var(--brand-accent); }
+
     .business-logo-card {
       display: flex;
       align-items: center;
@@ -476,7 +500,7 @@
       background: white;
       border: 1px solid var(--slate-200);
       border-radius: var(--radius-3xl);
-      padding: 32px;
+      padding: 20px;
       min-height: 180px;
       box-shadow: var(--shadow-sm);
     }
@@ -513,6 +537,12 @@
       background: #eff6ff;
       font-size: 22px;
       font-weight: 900;
+    }
+
+    .tile-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
 
     .service-tile h3 {
@@ -740,7 +770,10 @@
       align-items: start;
     }
 
-    .footer-logo img { height: 52px; width: auto; }
+    .footer-logo .brand-lockup img { height: 52px; width: 52px; border-radius: 14px; background: white; }
+    .footer-logo .brand-wordmark { color: white; }
+    .footer-logo .brand-wordmark span, .footer-logo .brand-tagline { color: #9cc4f0; }
+    .pay-art { height: 120px; width: auto; margin: 0 auto 8px; }
     .footer-copy { color: #dbeafe; line-height: 1.65; max-width: 480px; margin-top: 16px; font-size: 14px; }
     footer h3 { margin: 0 0 16px; }
     footer button {
@@ -774,8 +807,8 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="nsw-lockup">
-        <span class="fallback-dot"></span>
-        <span>Service Portal</span>
+        <img src="images/AppIconLarge.png" alt="" style="height: 20px; width: 20px; border-radius: 5px;">
+        <span>AAccent &middot; See &middot; Plan &middot; Act</span>
       </div>
       <div class="topbar-links">
         <span>Contact</span>
@@ -787,14 +820,10 @@
 
   <header class="site-header">
     <div class="container site-header-inner">
-      <button class="brand-button" type="button" data-route="home" aria-label="Service Portal home">
-        <!-- Original image removed for white-labelling -->
-        <span class="brand-fallback" style="display: flex;">
-          <span class="brand-icon">S</span>
-          <span>
-            <span class="brand-title">Service</span><br />
-            <span class="brand-subtitle">Portal</span>
-          </span>
+      <button class="brand-button" type="button" data-route="home" aria-label="AAccent home">
+        <span class="brand-lockup">
+          <img src="images/AppIconLarge.png" alt="AAccent logo">
+          <span><span class="brand-wordmark"><span>A</span>Accent</span><span class="brand-tagline">SEE &middot; PLAN &middot; ACT</span></span>
         </span>
       </button>
 
@@ -850,22 +879,15 @@
       <article class="hero">
         <div class="container hero-inner">
           <div>
-            <p class="eyebrow">Welcome</p>
+            <p class="eyebrow">Welcome to AAccent</p>
             <h1>A modern, streamlined service experience</h1>
-            <p>A static web prototype demonstrating a journey from a main portal into an embedded service for registration.</p>
+            <p>Your new hub for managing Road Occupancy Licences and other essential services, powered by a seamless, embedded experience.</p>
             <button class="primary-btn" data-route="business" type="button">Explore Operations</button>
           </div>
 
           <div class="preview-shell">
             <div class="preview-card">
-              <div class="journey">
-                <p class="journey-title">Journey preview</p>
-                <div class="journey-step"><span class="status-dot done"></span>Operations</div>
-                <div class="journey-step"><span class="status-dot done"></span>Roads and waterways</div>
-                <div class="journey-step"><span class="status-dot done"></span>Business and Industry</div>
-                <div class="journey-step"><span class="status-dot"></span>Road occupancy licences</div>
-                <div class="journey-step"><span class="status-dot"></span>Register a Proponent</div>
-              </div>
+              <img class="hero-art" src="images/HeroBanner.png" alt="Connected transport network illustration with traffic lights, buses and cars linked by sensors">
             </div>
           </div>
         </div>
@@ -883,28 +905,28 @@
     <section class="page" id="page-business">
       <div class="breadcrumb"><div class="container breadcrumb-inner">Home › Services › <b>Business and Industry</b></div></div>
 
-      <section class="page-hero">
+      <section class="page-hero business-hero">
         <div class="container grid-2-1">
           <div>
-            <p class="eyebrow" style="color:var(--brand-accent)">Services</p>
+            <p class="eyebrow">Services</p>
             <h1>Business and Industry</h1>
             <p>Information and resources for people and organisations who do business with us, including industry partners, accredited service providers and suppliers.</p>
           </div>
           <div class="business-logo-card">
-            <p style="color: var(--slate-400); font-weight: 700;">Your Logo Here</p>
+            <img src="images/SmallHeroBanner.png" alt="AAccent transport illustration" style="max-height: 220px; width: auto;">
           </div>
         </div>
       </section>
 
       <section class="container cards-section">
         <div class="tile-grid">
-          <article class="service-tile"><div class="tile-icon">🚚</div><h3>Heavy vehicles</h3><p>Information for heavy vehicle industry, operators and truck drivers.</p></article>
-          <article class="service-tile"><div class="tile-icon">🏢</div><h3>Partners and suppliers</h3><p>Resources for contractors, consultants, suppliers and third parties.</p></article>
-          <article class="service-tile"><div class="tile-icon">⛴</div><h3>Maritime dealers</h3><p>Support for vessel registration processes and maritime services.</p></article>
-          <article class="service-tile"><div class="tile-icon">📋</div><h3>Private development and third party work</h3><p>Guidance where projects interact with roads, rail or waterways.</p></article>
-          <article class="service-tile"><div class="tile-icon">⚠</div><h3>Event management guidelines</h3><p>Guides and resources to help plan outdoor street events.</p></article>
+          <article class="service-tile"><div class="tile-icon"><img src="images/tile-heavy-vehicles.svg" alt=""></div><h3>Heavy vehicles</h3><p>Information for heavy vehicle industry, operators and truck drivers.</p></article>
+          <article class="service-tile"><div class="tile-icon"><img src="images/tile-partners.svg" alt=""></div><h3>Partners and suppliers</h3><p>Resources for contractors, consultants, suppliers and third parties.</p></article>
+          <article class="service-tile"><div class="tile-icon"><img src="images/tile-maritime.svg" alt=""></div><h3>Maritime dealers</h3><p>Support for vessel registration processes and maritime services.</p></article>
+          <article class="service-tile"><div class="tile-icon"><img src="images/tile-development.svg" alt=""></div><h3>Private development and third party work</h3><p>Guidance where projects interact with roads, rail or waterways.</p></article>
+          <article class="service-tile"><div class="tile-icon"><img src="images/tile-events.svg" alt=""></div><h3>Event management guidelines</h3><p>Guides and resources to help plan outdoor street events.</p></article>
           <button type="button" class="service-tile" data-route="rol">
-            <div class="tile-icon" style="background:var(--tfnsw-blue);color:white">✓</div>
+            <div class="tile-icon"><img src="images/tile-rol.svg" alt=""></div>
             <h3>Road occupancy licences</h3>
             <p>A Road Occupancy Licence is required for any activity likely to impact on traffic flow, even if that activity takes place off-road.</p>
             <span class="open-service">Open service ›</span>
@@ -919,7 +941,7 @@
       <section class="page-hero rol-hero">
         <div class="container grid-2-1">
           <div>
-            <p class="eyebrow" style="color:var(--tfnsw-accent)">Business and Industry</p>
+            <p class="eyebrow" style="color:var(--brand-accent)">Business and Industry</p>
             <h1>Road occupancy licences</h1>
             <p>A Road Occupancy Licence is required for any activity that is likely to impact traffic flow, including activities that take place off-road.</p>
           </div>
@@ -988,6 +1010,7 @@
       <section class="page-hero">
         <div class="container">
           <div class="preview-card" style="max-width: 620px; margin-inline: auto; text-align: center; padding: 32px 24px;">
+            <img class="pay-art" src="images/BannerSmall.png" alt="">
             <div style="font-size: 48px; color: var(--green-700);">✓</div>
             <h1 style="color: var(--green-700);">Payment Successful</h1>
             <p>Thank you for your payment. Your transaction has been completed successfully. You may now close this window and return to the ROL application to continue.</p>
@@ -1002,6 +1025,7 @@
       <section class="page-hero">
         <div class="container">
           <div class="preview-card" style="max-width: 620px; margin-inline: auto; text-align: center; padding: 32px 24px;">
+            <img class="pay-art" src="images/BannerSmall.png" alt="">
             <div style="font-size: 48px; color: var(--red-700);">✕</div>
             <h1 style="color: var(--red-700);">Payment Cancelled</h1>
             <p>Your payment has been cancelled. You have not been charged. You may now close this window and return to the ROL application.</p>
@@ -1015,9 +1039,11 @@
   <footer>
     <div class="container footer-grid">
       <div class="footer-logo">
-        <!-- Original image removed for white-labelling -->
-        <div style="font-weight:900;font-size:24px;">Service Portal</div>
-        <p class="footer-copy">Static web page demo for a service portal with Pega-based proponent registration.</p>
+        <span class="brand-lockup">
+          <img src="images/AppIconLarge.png" alt="AAccent logo">
+          <span><span class="brand-wordmark"><span>A</span>Accent</span><span class="brand-tagline">SEE &middot; PLAN &middot; ACT</span></span>
+        </span>
+        <p class="footer-copy">Accenture Adaptive Command Control Event Network Transport. A modern, streamlined service experience for Road Occupancy Licences and other essential services.</p>
       </div>
       <div>
         <h3>Quick links</h3>
